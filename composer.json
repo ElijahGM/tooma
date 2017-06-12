@@ -1,5 +1,5 @@
 {
-    "name": "tooma/api",
+    "name": "tooma/sms-api",
     "description": "Send and receive SMS anywhere in the world using our web services",
     "keywords": ["sms", "laravel", "text messages", "send", "receive","tooma","yii2"],
     "homepage": "http://www.tooma.co.ke",
