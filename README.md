@@ -6,12 +6,14 @@ Go to http://tooma.co.ke/user/auth/signup create your account
 
 Once you have an account
 
-##Installation
-run 'composer require ElijahGM/tooma' or Add this to your `composer.json` file.
+# Installation
+
+run ```composer require ElijahGM/tooma``` or Add this to your `composer.json` file.
+```
    {
         "require": {
-                "infobip/oneapi": "dev-master"
+                "ElijahGM/toom": "dev-master"
         }
     }
 
-
+```
