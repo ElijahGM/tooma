@@ -1,4 +1,5 @@
 <?php
+namespace Tooma\Api;
 
 class Tooma{
 	private $authKey;
@@ -163,9 +164,4 @@ class Tooma{
 		    );
 	        return strtolower(join($a, "-"));
 	}
-}
-function d(){
-	echo "<pre>";
-    print_r(func_get_args()[0]);
-    exit;
 }
