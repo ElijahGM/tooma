@@ -65,8 +65,32 @@ run ```composer require tooma/sms-api```
   ```
 
  ### Retrive All Messages
+ To get all message logs
+ ```
+  $tooma->onSuccess(function($response,$pagination,$pager){
+          $rows = $response->data;
+          // 
+          while($pagination->hasNext()){
+           $pager->messageLogs()
+          }
+
+       })->onError(function($response)
+       {
+           // Logic on Error 
+       })->messageLogs();
+   ```
 
  ### Retrieve Message Status
+  To get message status
+ ```
+  $tooma->onSuccess(function($response,$pagination,$pager){
+          
+
+       })->onError(function($response)
+       {
+           // Logic on Error 
+       })->messageStatus(['message_id(s)']);
+   ```
 
  ### Get account balancce
  Getting balance just call balance as follows
