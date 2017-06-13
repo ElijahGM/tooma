@@ -8,7 +8,7 @@ Once you have an account
 
 # Installation
 
-run ```composer require ElijahGM/tooma``` or Add this to your `composer.json` file.
+run ```composer require tooma/sms-api``` or Add this to your `composer.json` file.
 ```
    {
         "require": {

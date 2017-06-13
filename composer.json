@@ -1,0 +1,27 @@
+{
+    "name": "tooma/sms-api",
+    "description": "Send and receive SMS anywhere in the world using our web services",
+    "keywords": ["sms", "laravel", "text messages", "send", "receive","tooma","yii2"],
+    "homepage": "http://www.tooma.co.ke",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Elijah Mwangi",
+            "email": "elijah@tooma.co.ke"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",       
+        "guzzlehttp/guzzle": "~6"    
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tooma\\Api\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
