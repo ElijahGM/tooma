@@ -12,7 +12,7 @@ run ```composer require tooma/sms-api```
 
 ## Usage
  ### Instantiate
- $tooma = new Tooma("API_KEY");
+``` $tooma = new Tooma("API_KEY");```
 
  ### Retrive ApiKey
  Once you get your API key, add it to the ```config/tooma-api.php``` config file, please note you only run this function once, you can also get your API key by going to tooma.co.ke > settings > api  
