@@ -11,11 +11,10 @@ Once you have an account
 run ```composer require tooma/sms-api```
 
 ## Usage
- ### Instantiate
-``` $tooma = new Tooma("API_KEY");```
+
 
  ### Retrive ApiKey
- Once you get your API key, add it to the ```config/tooma-api.php``` config file, please note you only run this function once, you can also get your API key by going to tooma.co.ke > settings > api  
+ Once you get your API key, save it config file, please note you only run this function once, you can also get your API key by going to tooma.co.ke > settings > api  
 
  ```
  $tooma->onSuccess(function($response,$pagination){
@@ -28,6 +27,8 @@ run ```composer require tooma/sms-api```
        })->login(['username'=>'YOUR_USERNAME_OR_EMAIL','password'=>'YOUR_PASSWORD']);
 
  ```
+ ### Instantiate
+``` $tooma = new Tooma("API_KEY");```
 
  ### Sending Message
  Sending SMS is as easy as just 
