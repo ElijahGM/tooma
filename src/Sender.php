@@ -5,7 +5,7 @@ class Sender{
 	private $authKey;
 	private $cert;
 	private $identifier=null;
-	private $endpoint="https://www.tooma.co.ke/api/v1/";
+	private $endpoint="http://www.tooma.co.ke/api/v1/";
     private $user_cert_path;
     private $cert_path=null;
     private $response;
@@ -21,7 +21,7 @@ class Sender{
 	{
 		if(is_null($this->cert_path)){
 
-			$this->cert_path = __DIR__."/ssl/./tooma.pem";
+			$this->cert_path = __DIR__."/ssl/tooma.pem";
 		}
 
 		if(file_exists($this->cert_path)){
@@ -74,6 +74,22 @@ class Sender{
 			
 		}
 	}
+	public function thenPing($url){ 
+
+	  return $this;
+	}
+	public function withTemplate($template){ 
+		  
+	  return $this;
+	}
+	public function withParams($template){ 
+		  
+	  return $this;
+	}
+	public function schedule($format){ 
+			  
+	   return $this;
+	}
 	public function onSuccess(\Closure $fn){ 
 	  if(is_callable($fn)){
 	  	$this->_on_success_observers[]=$fn;
@@ -117,7 +133,7 @@ class Sender{
 
         $resp = curl_exec($curl);
 		$this->response = json_decode($resp);
-	    d($resp);
+	    dd($resp);
 		if(is_object($this->response) && $this->response->success){
 			$this->fire();
 		}else{
