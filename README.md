@@ -67,12 +67,10 @@ run ```composer require tooma/sms-api```
  ### Retrive All Messages
  To get all message logs
  ```
-  $tooma->onSuccess(function($response,$pagination,$pager){
+  $tooma->onSuccess(function($response,$pagination){
           $rows = $response->data;
-          // 
-          while($pagination->hasNext()){
-           $pager->messageLogs()
-          }
+          // save to db
+          $pagination->getNext(); // call this to fetch the next page
 
        })->onError(function($response)
        {
@@ -83,7 +81,7 @@ run ```composer require tooma/sms-api```
  ### Retrieve Message Status
   To get message status
  ```
-  $tooma->onSuccess(function($response,$pagination,$pager){
+  $tooma->onSuccess(function($response,$pagination){
           
 
        })->onError(function($response)

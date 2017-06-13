@@ -11,6 +11,9 @@ class Sender{
     private $response;
     private $_on_success_observers=[];
     private $_on_error_observers=[];
+    public $lastCall="";
+    public $lastParams = [];
+    public $params = [];
 	public function __construct($token='',$cert_path=null)
 	{
 		$this->authKey        = $token;
@@ -32,6 +35,8 @@ class Sender{
 	   
 	}
 	private function prepare($method,$args){ 
+	  $this->lastCall   = $method;
+	  $this->lastParams = $args;
 	  switch ($method) {
 	  	case 'login':
 	  		if(isset($args['username'])){
@@ -66,7 +71,7 @@ class Sender{
 					            :"error";
 		foreach ($observers as $fn) {
 			if($event==='onSuccess'){
-				$fn($this->response->{$value},$this->response->pagination);
+				$fn($this->response->{$value},new Pagination($this,$this->response->pagination));
 			}else{
 				$fn($this->response->{$value});
 			}
@@ -74,20 +79,24 @@ class Sender{
 			
 		}
 	}
+	public function withCsv($path){ 
+	  $this->params['csv_content']=Reader::read($path);
+     return $this;
+	}
 	public function thenPing($url){ 
-
+      $this->params['callback_url']=$url;
 	  return $this;
 	}
 	public function withTemplate($template){ 
-		  
+	  $this->params['template']=$template;
 	  return $this;
 	}
-	public function withParams($template){ 
-		  
+	public function withParams($args){ 
+	  $this->params['template_args']=$args;
 	  return $this;
 	}
 	public function schedule($format){ 
-			  
+       $this->params['scheduled']=$format;
 	   return $this;
 	}
 	public function onSuccess(\Closure $fn){ 
@@ -133,7 +142,7 @@ class Sender{
 
         $resp = curl_exec($curl);
 		$this->response = json_decode($resp);
-	    dd($resp);
+	  
 		if(is_object($this->response) && $this->response->success){
 			$this->fire();
 		}else{
