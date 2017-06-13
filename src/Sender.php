@@ -1,7 +1,7 @@
 <?php
 namespace Tooma\Api;
 
-class Tooma{
+class Sender{
 	private $authKey;
 	private $cert;
 	private $identifier=null;
