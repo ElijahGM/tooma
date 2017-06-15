@@ -71,7 +71,12 @@ class Sender{
 					            :"error";
 		foreach ($observers as $fn) {
 			if($event==='onSuccess'){
-				$fn($this->response->{$value},new Pagination($this,$this->response->pagination));
+				if(property_exists($this->response,"pagination")){
+					$fn($this->response->{$value},new Pagination($this,$this->response->pagination));
+				}else{
+					$fn($this->response->{$value},new Pagination($this,[]));
+				}
+				
 			}else{
 				$fn($this->response->{$value});
 			}
